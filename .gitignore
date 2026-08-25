@@ -1,0 +1,48 @@
+# Perl build artifacts
+blib/
+Makefile
+MYMETA.json
+MYMETA.yml
+META.json
+META.yml
+MANIFEST.bak
+pm_to_blib
+*.ppd
+*.tar.gz
+*.zip
+/inc/
+
+# ExtUtils::MakeMaker / Module::Build
+_build/
+Build
+!Build.PL
+
+# cpanm local::lib dependency installs
+local/
+cpanfile.snapshot
+
+# Test output
+*.log
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.bak
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+/out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/

@@ -1,0 +1,35 @@
+Revision history for NetAcuity_API
+
+v7.0.0
+  - Added response echo validation: query_xml now verifies the server's
+    response echoes back the request's transaction ID and query IP before
+    accepting it.
+  - Added query-address validation (well-formed IP literal) and rejection of
+    transaction IDs containing a wire-protocol-breaking character
+    ('\''/'"'/'<'/'>'/'&').
+  - Changed: UDP sockets are now connect()-ed to the NetAcuity Server address,
+    so the OS itself rejects packets from any other source.
+  - Breaking: query_xml no longer defaults the transaction ID to a static
+    placeholder ("0") when omitted -- callers must now always supply one.
+  - Fixed: removed a backwards utf8::encode call in XML field parsing that
+    could garble non-ASCII field values.
+
+6.9.0.0  2026-06-22
+  - Published to public GitHub as an idiomatic Perl distribution.
+  - Removed Maven build infrastructure (pom.xml, assembly.xml).
+  - Restructured: module moved to lib/, examples moved to examples/.
+  - Added Makefile.PL and cpanfile for standard CPAN-style installation.
+  - Added Apache 2.0 license.
+  - Added POD documentation in lib/NetAcuity_API.pm.
+  - Fixed: debug print statement removed from server_addr() accessor.
+  - Fixed: error_msg initialized to empty string in all response paths
+    (previously could be undef in non-NA5 legacy response path).
+  - Added comprehensive test suite in t/.
+
+6.9.0.0  (internal release)
+  - Added support for feature-codes 44, 45, 46, 47
+    (Alt-Area Zip4, Alt-Area-Max Zip4, Alt-Area-Max IRIS, Alt-Area-Max PLZ8).
+
+6.8.0.0  (internal release)
+  - Added support for IPv6 server addresses.
+  - Added support for NetAcuity 5.x protocol (NA_5_INDICATOR).
